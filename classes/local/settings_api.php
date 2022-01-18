@@ -15,12 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * API for opencast
+ * Settings API for opencast
  *
  * @package    tool_opencast
- * @copyright  2018 Tobias Reischmann <tobias.reischmann@wi.uni-muenster.de>
- * @copyright  2017 Andreas Wagner, SYNERGY LEARNING
- * @author     Andreas Wagner
+ * @copyright  2021 Tamara Gunkel <tamara.gunkel@wi.uni-muenster.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -41,7 +39,7 @@ require_once($CFG->dirroot . '/lib/filelib.php');
  * @copyright  2021 Tamara Gunkel <tamara.gunkel@wi.uni-muenster.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class settings_api extends \curl
+class settings_api
 {
 
     /**

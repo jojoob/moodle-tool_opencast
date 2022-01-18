@@ -146,5 +146,27 @@ function xmldb_tool_opencast_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2021102700, 'tool', 'opencast');
     }
 
+    if ($oldversion < 2022011800) {
+        // Define table tool_opencast_hidden_videos to be created.
+        $table = new xmldb_table('tool_opencast_hidden_videos');
+
+        // Adding fields to table tool_opencast_hidden_videos.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+        $table->add_field('ocinstanceid', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL);
+        $table->add_field('seriesid', XMLDB_TYPE_CHAR, '36', null, XMLDB_NOTNULL);
+        $table->add_field('episodeid', XMLDB_TYPE_CHAR, '36', null, XMLDB_NOTNULL);
+
+        // Adding keys to table tool_opencast_hidden_videos.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for tool_opencast_hidden_videos.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Opencast savepoint reached.
+        upgrade_plugin_savepoint(true, 2022011800, 'tool', 'opencast');
+    }
+
     return true;
 }

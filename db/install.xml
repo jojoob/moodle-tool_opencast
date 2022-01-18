@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="admin/tool/opencast/db" VERSION="2021070800" COMMENT="XMLDB file for Moodle tool/opencast"
+<XMLDB PATH="admin/tool/opencast/db" VERSION="20220118" COMMENT="XMLDB file for Moodle tool/opencast"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
     <TABLE NAME="tool_opencast_series" COMMENT="Stores the series identifier for a course.">
@@ -15,6 +15,17 @@
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
         <KEY NAME="fk_course" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="tool_opencast_hidden_videos" COMMENT="Stores which videos are hidden from students.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="ocinstanceid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="seriesid" TYPE="char" LENGTH="36" NOTNULL="true" SEQUENCE="false" COMMENT="identifier of the series"/>
+        <FIELD NAME="episodeid" TYPE="char" LENGTH="36" NOTNULL="true" SEQUENCE="false" COMMENT="identifier of the episode"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
   </TABLES>
